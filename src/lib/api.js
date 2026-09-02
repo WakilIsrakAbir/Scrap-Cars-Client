@@ -24,7 +24,10 @@ export async function apiFetch(endpoint, options = {}) {
 
 // Auth helpers
 export function setToken(token) {
-  localStorage.setItem("token", token);
+  if (typeof window !== "undefined") {
+    localStorage.setItem("token", token);
+    window.dispatchEvent(new Event("auth-change"));
+  }
 }
 
 export function getToken() {
@@ -32,7 +35,10 @@ export function getToken() {
 }
 
 export function removeToken() {
-  localStorage.removeItem("token");
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("token");
+    window.dispatchEvent(new Event("auth-change"));
+  }
 }
 
 export function getUser() {
@@ -42,13 +48,19 @@ export function getUser() {
 }
 
 export function setUser(user) {
-  localStorage.setItem("user", JSON.stringify(user));
+  if (typeof window !== "undefined") {
+    localStorage.setItem("user", JSON.stringify(user));
+    window.dispatchEvent(new Event("auth-change"));
+  }
 }
 
 export function logout() {
   removeToken();
-  localStorage.removeItem("user");
-  window.location.href = "/login";
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("user");
+    window.dispatchEvent(new Event("auth-change"));
+    window.location.href = "/login";
+  }
 }
 
 export function isAdmin() {

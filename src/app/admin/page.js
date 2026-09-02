@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
 import { Car, Users, CheckCircle, Clock } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AdminDashboard() {
+  const { t } = useLanguage();
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -17,7 +19,6 @@ export default function AdminDashboard() {
       const data = await apiFetch("/admin/stats");
       setStats(data);
     } catch {
-      // Mock stats if backend fails for now
       setStats({
         totalPosts: 0,
         pendingPosts: 0,
@@ -29,18 +30,20 @@ export default function AdminDashboard() {
     }
   };
 
-  if (loading) return <div className="text-slate-400">Loading stats...</div>;
+  if (loading) return <div className="text-slate-400">{t("common.loading", "Loading stats...")}</div>;
 
   const statCards = [
-    { label: "Total Posts", value: stats?.totalPosts || 0, icon: Car, color: "text-blue-400", bg: "bg-blue-400/10" },
-    { label: "Pending Review", value: stats?.pendingPosts || 0, icon: Clock, color: "text-yellow-400", bg: "bg-yellow-400/10" },
-    { label: "Completed Deals", value: stats?.completedPosts || 0, icon: CheckCircle, color: "text-green-400", bg: "bg-green-400/10" },
-    { label: "Total Users", value: stats?.totalUsers || 0, icon: Users, color: "text-purple-400", bg: "bg-purple-400/10" },
+    { label: t("admin.statTotalPosts", "Total Posts"), value: stats?.totalPosts || 0, icon: Car, color: "text-blue-400", bg: "bg-blue-400/10" },
+    { label: t("admin.statPending", "Pending Review"), value: stats?.pendingPosts || 0, icon: Clock, color: "text-yellow-400", bg: "bg-yellow-400/10" },
+    { label: t("admin.statCompleted", "Completed Deals"), value: stats?.completedPosts || 0, icon: CheckCircle, color: "text-green-400", bg: "bg-green-400/10" },
+    { label: t("admin.statTotalUsers", "Total Users"), value: stats?.totalUsers || 0, icon: Users, color: "text-purple-400", bg: "bg-purple-400/10" },
   ];
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-white mb-6">Dashboard Overview</h1>
+      <h1 className="text-2xl font-bold text-white mb-6">
+        {t("admin.overview", "Dashboard Overview")}
+      </h1>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {statCards.map((s, i) => {

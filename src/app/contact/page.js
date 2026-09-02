@@ -2,8 +2,15 @@
 
 import { Mail, MapPin, Phone, MessageCircle, Clock, CheckCircle2 } from "lucide-react";
 import { SITE_INFO } from "@/lib/constants";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactPage() {
+  const { t, locale, isRTL } = useLanguage();
+
+  const whatsappInquiry = locale === "ar"
+    ? "مرحباً ScrapCars دبي، أود التواصل معكم بخصوص بيع سيارة."
+    : "Hi ScrapCars Dubai, I want to inquire about selling my car.";
+
   return (
     <div className="pt-32 pb-24 px-4 min-h-screen bg-navy-950 relative overflow-hidden">
       {/* Decorative Blur */}
@@ -12,12 +19,17 @@ export default function ContactPage() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-20">
-          <span className="text-sm font-bold uppercase tracking-widest text-accent mb-3 block">Get In Touch</span>
+          <span className="text-sm font-bold uppercase tracking-widest text-accent mb-3 block">
+            {t("contactPage.tag", "Get In Touch")}
+          </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight">
-            We're Here To <span className="text-gradient">Help</span>
+            {t("contactPage.titleStart", "We're Here To")}{" "}
+            <span className="text-gradient">
+              {t("contactPage.titleGradient", "Help")}
+            </span>
           </h1>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Have questions about selling your scrap car? Need an instant valuation? Reach out to our team 24/7.
+            {t("contactPage.subtitle", "Have questions about selling your scrap car? Need an instant valuation? Reach out to our team 24/7.")}
           </p>
         </div>
 
@@ -30,8 +42,10 @@ export default function ContactPage() {
                 <Phone className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white mb-1">Call Us Directly</h3>
-                <a href={`tel:${SITE_INFO.phoneRaw}`} className="text-slate-400 hover:text-white transition-colors text-lg">
+                <h3 className="text-xl font-bold text-white mb-1">
+                  {t("contactPage.callTitle", "Call Us Directly")}
+                </h3>
+                <a href={`tel:${SITE_INFO.phoneRaw}`} className="text-slate-400 hover:text-white transition-colors text-lg dir-ltr block">
                   {SITE_INFO.phone}
                 </a>
               </div>
@@ -42,14 +56,16 @@ export default function ContactPage() {
                 <MessageCircle className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white mb-1">WhatsApp Us</h3>
+                <h3 className="text-xl font-bold text-white mb-1">
+                  {t("contactPage.whatsAppTitle", "WhatsApp Us")}
+                </h3>
                 <a 
-                  href={`https://wa.me/${SITE_INFO.whatsapp}`}
+                  href={`https://wa.me/${SITE_INFO.whatsapp}?text=${encodeURIComponent(whatsappInquiry)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-white transition-colors text-lg"
+                  className="text-[#25D366] hover:underline transition-colors text-lg font-medium block"
                 >
-                  Click to Chat (Instant Reply)
+                  {t("contactPage.whatsAppSubtitle", "Click to Chat (Instant Reply)")}
                 </a>
               </div>
             </div>
@@ -59,10 +75,12 @@ export default function ContactPage() {
                 <Clock className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white mb-1">Business Hours</h3>
-                <p className="text-slate-400 text-lg mb-1">Open 24/7</p>
+                <h3 className="text-xl font-bold text-white mb-1">
+                  {t("contactPage.hoursTitle", "Business Hours")}
+                </h3>
+                <p className="text-slate-400 text-lg mb-1">{t("contactPage.hoursDesc", "Open 24/7")}</p>
                 <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-medium bg-emerald-500/10 inline-flex px-2 py-1 rounded-md">
-                  <CheckCircle2 className="w-3 h-3" /> Towing available anytime
+                  <CheckCircle2 className="w-3 h-3" /> {t("contactPage.towingBadge", "Towing available anytime")}
                 </div>
               </div>
             </div>
@@ -73,16 +91,18 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-1">Our Facility</h3>
-                  <p className="text-slate-400 text-base">{SITE_INFO.address}</p>
+                  <h3 className="text-xl font-bold text-white mb-1">
+                    {t("contactPage.facilityTitle", "Our Dismantling Facility")}
+                  </h3>
+                  <p className="text-slate-400 text-base">{t("footer.location", SITE_INFO.address)}</p>
                 </div>
               </div>
-              {/* Map Placeholder */}
+              {/* Map View */}
               <div className="w-full h-48 rounded-xl bg-navy-800 border border-white/5 relative overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80" alt="Map" className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity" />
+                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80" alt="Map of Dubai" className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity" />
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <span className="px-4 py-2 rounded-lg bg-navy-950/80 backdrop-blur text-sm font-semibold text-white border border-white/10 flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-accent" /> View on Google Maps
+                    <MapPin className="w-4 h-4 text-accent" /> {t("contactPage.viewMap", "View on Google Maps")}
                   </span>
                 </div>
               </div>
@@ -94,14 +114,20 @@ export default function ContactPage() {
           <div className="lg:col-span-7">
             <div className="p-10 rounded-3xl glass-card h-full">
               <div className="mb-8">
-                <h3 className="text-3xl font-black text-white mb-3">Send a Message</h3>
-                <p className="text-slate-400 font-light">Fill out the form below and our team will get back to you within 30 minutes.</p>
+                <h3 className="text-3xl font-black text-white mb-3">
+                  {t("contactPage.formTitle", "Send a Message")}
+                </h3>
+                <p className="text-slate-400 font-light">
+                  {t("contactPage.formSubtitle", "Fill out the form below and our team will get back to you within 30 minutes.")}
+                </p>
               </div>
 
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">First Name</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      {t("contactPage.firstName", "First Name")}
+                    </label>
                     <input
                       type="text"
                       placeholder="Ahmed"
@@ -109,7 +135,9 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">Last Name</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      {t("contactPage.lastName", "Last Name")}
+                    </label>
                     <input
                       type="text"
                       placeholder="Al Mansouri"
@@ -120,7 +148,9 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      {t("contactPage.email", "Email Address")}
+                    </label>
                     <input
                       type="email"
                       placeholder="ahmed@example.com"
@@ -128,7 +158,9 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">Phone Number</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      {t("contactPage.phone", "Phone / WhatsApp Number")}
+                    </label>
                     <input
                       type="tel"
                       placeholder="050 123 4567"
@@ -138,19 +170,21 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Your Message</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">
+                    {t("contactPage.message", "Your Message")}
+                  </label>
                   <textarea
                     rows={5}
-                    placeholder="How can we help? Include car details if you want a quote..."
+                    placeholder={t("contactPage.messagePlaceholder", "How can we help? Include car details if you want a quote...")}
                     className="w-full px-5 py-3.5 rounded-xl bg-navy-950 border border-white/10 text-white text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-shadow resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-xl bg-gradient-to-r from-accent to-amber-500 text-white font-bold text-base shadow-[0_0_30px_rgba(255,107,44,0.3)] hover:shadow-[0_0_40px_rgba(255,107,44,0.5)] transition-all hover:-translate-y-1"
+                  className="w-full py-4 rounded-xl bg-gradient-to-r from-accent to-amber-500 text-white font-bold text-base shadow-[0_0_30px_rgba(255,107,44,0.3)] hover:shadow-[0_0_40px_rgba(255,107,44,0.5)] transition-all hover:-translate-y-1 cursor-pointer"
                 >
-                  Send Message
+                  {t("contactPage.sendBtn", "Send Message")}
                 </button>
               </form>
             </div>

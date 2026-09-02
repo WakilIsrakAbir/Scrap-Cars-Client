@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AdminUsersPage() {
+  const { t } = useLanguage();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -22,21 +24,23 @@ export default function AdminUsersPage() {
     }
   };
 
-  if (loading) return <div className="text-slate-400">Loading users...</div>;
+  if (loading) return <div className="text-slate-400">{t("common.loading", "Loading users...")}</div>;
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-white mb-6">Registered Users</h1>
+      <h1 className="text-2xl font-bold text-white mb-6">
+        {t("admin.usersTitle", "Registered Users")}
+      </h1>
 
       <div className="bg-navy-900/60 border border-white/5 rounded-2xl overflow-hidden">
         <table className="w-full text-left text-sm text-slate-300">
           <thead className="bg-navy-950 border-b border-white/5 text-xs uppercase text-slate-500">
             <tr>
-              <th className="px-6 py-4">Name</th>
-              <th className="px-6 py-4">Email</th>
-              <th className="px-6 py-4">Phone</th>
-              <th className="px-6 py-4">Role</th>
-              <th className="px-6 py-4">Joined</th>
+              <th className="px-6 py-4">{t("admin.tableName", "Name")}</th>
+              <th className="px-6 py-4">{t("admin.tableEmail", "Email")}</th>
+              <th className="px-6 py-4">{t("admin.tablePhone", "Phone")}</th>
+              <th className="px-6 py-4">{t("admin.tableRole", "Role")}</th>
+              <th className="px-6 py-4">{t("admin.tableJoined", "Joined")}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-white/5">
@@ -58,7 +62,7 @@ export default function AdminUsersPage() {
             {users.length === 0 && (
               <tr>
                 <td colSpan="5" className="px-6 py-8 text-center text-slate-500">
-                  No users found.
+                  {t("common.noData", "No users found.")}
                 </td>
               </tr>
             )}

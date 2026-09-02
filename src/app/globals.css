@@ -5,6 +5,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   --font-heading: var(--font-outfit);
+  --font-arabic: var(--font-cairo);
 
   --color-navy-950: #040B14;
   --color-navy-900: #0B1526;
@@ -15,6 +16,10 @@
   --color-accent-hover: #E85A1D;
   --color-gold: #F59E0B;
   --color-success: #10B981;
+}
+
+.font-arabic {
+  font-family: var(--font-cairo), system-ui, -apple-system, sans-serif;
 }
 
 :root {

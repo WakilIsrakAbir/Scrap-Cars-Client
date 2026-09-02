@@ -1,9 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Phone, ShieldCheck, Star } from "lucide-react";
+import { ArrowRight, ArrowLeft, Phone, ShieldCheck, Star, MessageCircle } from "lucide-react";
 import { SITE_INFO } from "@/lib/constants";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function HeroSection() {
+  const { t, isRTL, locale } = useLanguage();
+
+  const whatsappMsg = locale === "ar"
+    ? "مرحباً ScrapCars دبي، أريد تقييم فوري لسيارتي."
+    : "Hi ScrapCars Dubai, I would like an instant valuation for my scrap car.";
+
   return (
     <section className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center pt-20 pb-10 overflow-hidden">
       {/* Background Image */}
@@ -28,25 +37,24 @@ export default function HeroSection() {
             <div className="flex flex-wrap items-center gap-2.5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border-accent/30 text-accent text-xs font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(255,107,44,0.2)]">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                Dubai&apos;s #1 Scrap Car Buyer
+                {t("hero.badge", "Dubai's #1 Scrap Car Buyer")}
               </div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white text-xs font-medium backdrop-blur-md">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                RTA Certified
+                <span>RTA Paperwork Free</span>
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.15] tracking-tight">
-              Turn Your Scrap Car Into <br/>
-              <span className="text-gradient drop-shadow-xl relative inline-block">
-                Instant Cash
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.2] tracking-tight">
+              {t("hero.titleStart", "Turn Your Scrap Car Into ")}
+              <span className="text-gradient drop-shadow-xl relative inline-block mx-1">
+                {t("hero.titleHighlight", "Instant Cash")}
                 <div className="absolute -bottom-1 left-0 w-full h-2 bg-accent/20 blur-sm rounded-full" />
-              </span> Today.
+              </span>
             </h1>
 
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl font-normal">
-              We buy cars in any condition — scrap, damaged, accident, or dead engines. 
-              Enjoy <strong className="text-white font-semibold">free doorstep towing</strong> across Dubai & UAE and immediate cash payment on the spot.
+              {t("hero.subtitle", "We buy cars in any condition across UAE with free towing and instant cash on spot.")}
             </p>
 
             <div className="flex flex-wrap gap-3.5 pt-2">
@@ -54,14 +62,21 @@ export default function HeroSection() {
                 href="/dashboard/new-post"
                 className="px-6 py-3 rounded-xl bg-gradient-to-r from-accent to-amber-500 text-white font-bold text-sm shadow-[0_0_25px_rgba(255,107,44,0.3)] hover:shadow-[0_0_35px_rgba(255,107,44,0.5)] transition-all hover:-translate-y-0.5 flex items-center gap-2 group"
               >
-                Get Free Quote <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <span>{t("hero.ctaPrimary", "Get Instant Cash Offer")}</span>
+                {isRTL ? (
+                  <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                ) : (
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                )}
               </Link>
 
               <a
-                href={`tel:${SITE_INFO.phoneRaw}`}
-                className="px-6 py-3 rounded-xl glass border border-white/20 text-white font-bold text-sm hover:bg-white/10 transition-all hover:-translate-y-0.5 flex items-center gap-2"
+                href={`https://wa.me/${SITE_INFO.whatsapp}?text=${encodeURIComponent(whatsappMsg)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 rounded-xl bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366] hover:text-white font-bold text-sm transition-all hover:-translate-y-0.5 flex items-center gap-2"
               >
-                <Phone className="w-4 h-4" /> Call {SITE_INFO.phone}
+                <MessageCircle className="w-4 h-4" /> {t("hero.ctaSecondary", "WhatsApp Quotation")}
               </a>
             </div>
 
@@ -75,12 +90,12 @@ export default function HeroSection() {
                   <Star className="w-3.5 h-3.5 fill-current" />
                   <Star className="w-3.5 h-3.5 fill-current" />
                 </div>
-                <span className="text-[11px] text-slate-400 font-medium">4.9/5 from 2,000+ Reviews</span>
+                <span className="text-[11px] text-slate-400 font-medium">4.9/5 (2,000+ Reviews)</span>
               </div>
               <div className="w-px h-7 bg-white/10" />
               <div className="flex flex-col">
-                <span className="text-lg font-bold text-white leading-tight">10,000+</span>
-                <span className="text-[11px] text-slate-400 font-medium">Cars Bought in UAE</span>
+                <span className="text-lg font-bold text-white leading-tight">{t("hero.stat1Number", "15,000+")}</span>
+                <span className="text-[11px] text-slate-400 font-medium">{t("hero.stat1Label", "Cars Purchased")}</span>
               </div>
             </div>
           </div>
@@ -103,38 +118,38 @@ export default function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent" />
 
                 {/* Card Tag */}
-                <div className="absolute top-4 left-4 glass px-3 py-1 rounded-full border border-white/15 text-[11px] font-semibold text-white backdrop-blur-md">
-                  🚗 Any Make & Model Accepted
+                <div className={`absolute top-4 ${isRTL ? "right-4" : "left-4"} glass px-3 py-1 rounded-full border border-white/15 text-[11px] font-semibold text-white backdrop-blur-md`}>
+                  🚗 {locale === "ar" ? "نشتري جميع الموديلات والحالات" : "Any Make & Model Accepted"}
                 </div>
                 
                 {/* Bottom Card Info */}
                 <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-xs text-amber-400 font-semibold tracking-wide uppercase">Highest Valuation</p>
-                  <p className="text-white font-bold text-base">Damaged, Scrap & Non-Running Cars</p>
+                  <p className="text-xs text-amber-400 font-semibold tracking-wide uppercase">{t("whyChooseUs.features.0.title", "Highest Valuation")}</p>
+                  <p className="text-white font-bold text-base">{t("hero.badge", "Damaged & Scrap Cars")}</p>
                 </div>
              </div>
 
              {/* Floating Trust Badges */}
-             <div className="absolute -bottom-4 -left-4 glass px-4 py-2.5 rounded-xl border border-white/15 shadow-xl backdrop-blur-md z-20 animate-float-reverse">
+             <div className={`absolute -bottom-4 ${isRTL ? "-right-4" : "-left-4"} glass px-4 py-2.5 rounded-xl border border-white/15 shadow-xl backdrop-blur-md z-20 animate-float-reverse`}>
                <div className="flex items-center gap-2.5">
                  <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
-                   <span className="text-sm font-bold text-accent">AED</span>
+                   <span className="text-sm font-bold text-accent">{t("common.aed", "AED")}</span>
                  </div>
                  <div>
-                   <p className="text-white font-bold text-xs">Instant Cash</p>
-                   <p className="text-slate-400 text-[10px]">Paid on the spot</p>
+                   <p className="text-white font-bold text-xs">{t("common.instantCash", "Instant Cash")}</p>
+                   <p className="text-slate-400 text-[10px]">{locale === "ar" ? "تسليم فوري في يدك" : "Paid on the spot"}</p>
                  </div>
                </div>
              </div>
              
-             <div className="absolute -top-4 -right-2 glass px-4 py-2.5 rounded-xl border border-white/15 shadow-xl backdrop-blur-md z-20 animate-float-slow">
+             <div className={`absolute -top-4 ${isRTL ? "-left-2" : "-right-2"} glass px-4 py-2.5 rounded-xl border border-white/15 shadow-xl backdrop-blur-md z-20 animate-float-slow`}>
                <div className="flex items-center gap-2.5">
                  <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
                  </div>
                  <div>
-                   <p className="text-white font-bold text-xs">Free Towing</p>
-                   <p className="text-slate-400 text-[10px]">All over UAE</p>
+                   <p className="text-white font-bold text-xs">{t("common.freeTowing", "Free Towing")}</p>
+                   <p className="text-slate-400 text-[10px]">{locale === "ar" ? "لكل مدن الإمارات" : "All over UAE"}</p>
                  </div>
                </div>
              </div>
