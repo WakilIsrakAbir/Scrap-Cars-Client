@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowRight, ArrowLeft, Phone, ShieldCheck, Star, MessageCircle } from "lucide-react";
 import { SITE_INFO } from "@/lib/constants";
 import { useLanguage } from "@/context/LanguageContext";
@@ -18,7 +19,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1530983821611-372076fa48ba?w=1920&q=85&auto=format&fit=crop"
+          src="/Cars/pexels-rivni-11941396.jpg"
           alt="Scrapyard with cars in Dubai"
           fill
           priority
@@ -32,7 +33,12 @@ export default function HeroSection() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-8">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="lg:col-span-7 space-y-5">
+          <motion.div
+            initial={{ opacity: 0, x: isRTL ? 40 : -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="lg:col-span-7 space-y-5"
+          >
             
             <div className="flex flex-wrap items-center gap-2.5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border-accent/30 text-accent text-xs font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(255,107,44,0.2)]">
@@ -62,7 +68,7 @@ export default function HeroSection() {
                 href="/dashboard/new-post"
                 className="px-6 py-3 rounded-xl bg-gradient-to-r from-accent to-amber-500 text-white font-bold text-sm shadow-[0_0_25px_rgba(255,107,44,0.3)] hover:shadow-[0_0_35px_rgba(255,107,44,0.5)] transition-all hover:-translate-y-0.5 flex items-center gap-2 group"
               >
-                <span>{t("hero.ctaPrimary", "Get Instant Cash Offer")}</span>
+                <span>{t("hero.ctaPrimary", "Sell Your Car")}</span>
                 {isRTL ? (
                   <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                 ) : (
@@ -98,17 +104,22 @@ export default function HeroSection() {
                 <span className="text-[11px] text-slate-400 font-medium">{t("hero.stat1Label", "Cars Purchased")}</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column - Eye-Catchy Visual Element */}
-          <div className="hidden lg:flex lg:col-span-5 relative w-full items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+            className="hidden lg:flex lg:col-span-5 relative w-full items-center justify-center"
+          >
              {/* Ambient glow behind card */}
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-gradient-to-tr from-accent/25 via-amber-500/10 to-blue-500/15 rounded-full blur-[70px] pointer-events-none" />
              
              {/* Floating Card Container */}
              <div className="relative w-full max-w-md aspect-[4/3] rounded-2xl overflow-hidden glass border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)] animate-float group">
                 <Image 
-                  src="https://images.unsplash.com/photo-1532581140115-3e355d1ed1de?q=80&w=1200&auto=format&fit=crop"
+                  src="/Cars/pexels-celalkeser-33375045.jpg"
                   alt="Scrap and Damaged Car"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
@@ -153,7 +164,7 @@ export default function HeroSection() {
                  </div>
                </div>
              </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

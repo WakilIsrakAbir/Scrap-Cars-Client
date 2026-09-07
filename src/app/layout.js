@@ -10,8 +10,21 @@ const outfit = Outfit({ variable: "--font-outfit", subsets: ["latin"], display: 
 const cairo = Cairo({ variable: "--font-cairo", subsets: ["arabic", "latin"], display: "swap" });
 
 export const metadata = {
-  title: "ScrapCars Dubai | Sell Your Scrap & Damaged Car for Instant Cash",
+  title: {
+    default: "Home | ScrapCars",
+    template: "%s | ScrapCars",
+  },
   description: "Dubai's #1 scrap car buyer. Sell any condition car for instant cash. Free towing across UAE. RTA paperwork handled.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon-192.png",
+  },
 };
 
 export default function RootLayout({ children }) {

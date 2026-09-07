@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="scGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5722"/>
+      <stop offset="45%" stop-color="#FF6B2C"/>
+      <stop offset="100%" stop-color="#FFA000"/>
+    </linearGradient>
+    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background rounded squircle -->
+  <rect width="128" height="128" rx="30" fill="url(#scGradient)"/>
+  
+  <!-- Sleek subtle inner border -->
+  <rect x="2" y="2" width="124" height="124" rx="28" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-opacity="0.35"/>
+
+  <!-- ScrapCars Vehicle Silhouette in crisp white -->
+  <g filter="url(#subtleShadow)">
+    <!-- Cabin & Windshield -->
+    <path d="M38 42C41 34 46 32 54 32H74C82 32 87 34 90 42L98 55H30L38 42Z" fill="#FFFFFF"/>
+    
+    <!-- Windshield glass cutouts (accent orange contrast) -->
+    <path d="M42 43L47 36C49.5 35 52 35 56 35H62V51H37L42 43Z" fill="#FF5722" fill-opacity="0.85"/>
+    <path d="M66 35H72C76 35 78.5 35 81 36L86 43L91 51H66V35Z" fill="#FF5722" fill-opacity="0.85"/>
+
+    <!-- Main Car Body -->
+    <path d="M22 55C18 55 16 57 16 61V72C16 75 18 77 21 77H24C24 71.5 28.5 67 34 67C39.5 67 44 71.5 44 77H84C84 71.5 88.5 67 94 67C99.5 67 104 71.5 104 77H107C110 77 112 75 112 72V61C112 57 110 55 106 55H22Z" fill="#FFFFFF"/>
+    
+    <!-- Headlights -->
+    <path d="M19 60H26C27.5 60 28 61 28 62.5C28 64 27.5 65 26 65H19C17.5 65 17 64 17 62.5C17 61 17.5 60 19 60Z" fill="#FFF3E0"/>
+    <path d="M109 60H102C100.5 60 100 61 100 62.5C100 64 100.5 65 102 65H109C110.5 65 111 64 111 62.5C111 61 110.5 60 109 60Z" fill="#FFF3E0"/>
+
+    <!-- Left Wheel (Wheel outer tire + rim) -->
+    <circle cx="34" cy="77" r="12" fill="#0B1120"/>
+    <circle cx="34" cy="77" r="6.5" fill="#E2E8F0"/>
+    <circle cx="34" cy="77" r="3" fill="#FF6B2C"/>
+
+    <!-- Right Wheel (Wheel outer tire + rim) -->
+    <circle cx="94" cy="77" r="12" fill="#0B1120"/>
+    <circle cx="94" cy="77" r="6.5" fill="#E2E8F0"/>
+    <circle cx="94" cy="77" r="3" fill="#FF6B2C"/>
+  </g>
+</svg>

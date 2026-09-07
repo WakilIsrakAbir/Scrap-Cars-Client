@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { UserPlus, Eye, EyeOff, CheckCircle2, AlertCircle } from "lucide-react";
 import { apiFetch, setToken, setUser } from "@/lib/api";
 import { useLanguage } from "@/context/LanguageContext";
@@ -52,7 +53,12 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 pt-24 pb-16">
-      <div className="w-full max-w-md p-8 rounded-2xl bg-navy-900/80 border border-white/5 shadow-2xl">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="w-full max-w-md p-8 rounded-2xl bg-navy-900/80 border border-white/5 shadow-2xl"
+      >
         <div className="text-center mb-8">
           <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mx-auto mb-4">
             <UserPlus className="w-6 h-6" />
@@ -204,7 +210,7 @@ export default function RegisterPage() {
             {t("auth.loginLink", "Login")}
           </Link>
         </p>
-      </div>
+      </motion.div>
     </div>
   );
 }

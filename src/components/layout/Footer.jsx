@@ -23,7 +23,10 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed font-light">
-              {t("footer.description", "Dubai's trusted scrap & damaged car buyer. Instant cash, free towing, and legal RTA paperwork.")}
+              {t(
+                "footer.description",
+                "Dubai's trusted scrap & damaged car buyer. Instant cash, free towing, and legal RTA paperwork.",
+              )}
             </p>
           </div>
 
@@ -33,11 +36,35 @@ export default function Footer() {
               {t("footer.quickLinks", "Quick Links")}
             </h4>
             <ul className="space-y-2 text-sm text-slate-400">
-              <li><Link href="/" className="hover:text-white transition-colors">{t("nav.home", "Home")}</Link></li>
-              <li><Link href="/about" className="hover:text-white transition-colors">{t("nav.about", "About Us")}</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">{t("nav.services", "Services")}</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">{t("nav.contact", "Contact")}</Link></li>
-              <li><Link href="/dashboard/new-post" className="hover:text-accent transition-colors font-medium">{t("nav.sellCar", "Sell Your Car")}</Link></li>
+              <li>
+                <Link href="/" className="hover:text-white transition-colors">
+                  {t("nav.home", "Home")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="hover:text-white transition-colors"
+                >
+                  {t("nav.about", "About Us")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="hover:text-white transition-colors"
+                >
+                  {t("nav.contact", "Contact")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/dashboard/new-post"
+                  className="hover:text-accent transition-colors font-medium"
+                >
+                  {t("nav.sellCar", "Sell Your Car")}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -49,7 +76,12 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm text-slate-400">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-accent flex-shrink-0" />
-                <a href={`tel:${SITE_INFO.phoneRaw}`} className="hover:text-white dir-ltr">{SITE_INFO.phone}</a>
+                <a
+                  href={`tel:${SITE_INFO.phoneRaw}`}
+                  className="hover:text-white dir-ltr"
+                >
+                  {SITE_INFO.phone}
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-accent flex-shrink-0" />
@@ -64,7 +96,8 @@ export default function Footer() {
         </div>
 
         <p className="pt-6 text-center text-xs text-slate-500">
-          © {new Date().getFullYear()} {SITE_INFO.name}. {t("footer.rights", "All rights reserved.")}
+          © {new Date().getFullYear()} {SITE_INFO.name}.{" "}
+          {t("footer.rights", "All rights reserved.")}
         </p>
       </div>
     </footer>

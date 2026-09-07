@@ -12,7 +12,6 @@ export const SITE_INFO = {
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -40,10 +39,27 @@ export const HOW_IT_WORKS = [
 ];
 
 export const CAR_BRANDS = [
-  "Toyota", "Nissan", "Honda", "Mercedes-Benz", "BMW", "Lexus",
-  "Ford", "Hyundai", "Kia", "Audi", "Land Rover", "Mitsubishi",
-  "Volkswagen", "Chevrolet", "Porsche", "Jeep", "GMC", "Dodge",
-  "Infiniti", "Other",
+  "Abarth", "Acura", "Aiways", "Alfa Romeo", "Alpine", "Aston Martin", "Audi", 
+  "Austin", "Autobianchi", "BAIC", "Baojun", "Bentley", "BMW", "Borgward", 
+  "Brilliance", "Bugatti", "Buick", "BYD", "Cadillac", "Changan", "Chery", 
+  "Chevrolet", "Chrysler", "Citroen", "Cupra", "Dacia", "Daewoo", "Daihatsu", 
+  "Datsun", "De Tomaso", "Dodge", "Dongfeng", "DS Automobiles", "Eagle", "Exeed", 
+  "FAW", "Ferrari", "Fiat", "Fisker", "Force", "Ford", "Foton", "GAC", "Geely", 
+  "Genesis", "Geo", "GMC", "Great Wall", "Haval", "Hino", "Holden", "Honda", 
+  "Hongqi", "Hummer", "Hyundai", "Infiniti", "Ineos", "Innocenti", "Isuzu", 
+  "Iveco", "JAC", "Jaecoo", "Jaguar", "Jeep", "Jetour", "JMC", "Karma", "Kia", 
+  "Koenigsegg", "KTM", "Lada", "Lamborghini", "Lancia", "Land Rover", "Lexus", 
+  "Lifan", "Lincoln", "Lotus", "Lucid", "Lynk & Co", "Mahindra", "Marcos", 
+  "Maserati", "Maxus", "Maybach", "Mazda", "McLaren", "Mercedes-Benz", "Mercury", 
+  "MG", "Mini", "Mitsubishi", "Mitsuoka", "Morgan", "Morris", "Nio", "Nissan", 
+  "Noble", "Oldsmobile", "Omoda", "Opel", "Pagani", "Panoz", "Peugeot", "Plymouth", 
+  "Polestar", "Pontiac", "Porsche", "Proton", "Qoros", "Ram", "Range Rover", 
+  "Ravon", "Renault", "Rimac", "Rivian", "Roewe", "Rolls-Royce", "Rover", "Saab", 
+  "Saleen", "Saturn", "Scion", "Seat", "Seres", "Shelby", "Skoda", "Smart", 
+  "Spyker", "SsangYong", "Subaru", "Suzuki", "Talbot", "Tank", "Tata", "Tesla", 
+  "Think", "Toyota", "Triumph", "TVR", "Vauxhall", "Vector", "Venturi", 
+  "VinFast", "Volkswagen", "Volvo", "VPG", "Wiesmann", "Wuling", "Xpeng", 
+  "Yugo", "Zeekr", "Zotye", "Other"
 ];
 
 export const CAR_CONDITIONS = [
@@ -56,14 +72,62 @@ export const CAR_CONDITIONS = [
 ];
 
 export const POST_STATUSES = {
-  PENDING: { label: "Pending Review", color: "text-yellow-400", bg: "bg-yellow-400/10", border: "border-yellow-400/30" },
-  UNDER_REVIEW: { label: "Under Review", color: "text-blue-400", bg: "bg-blue-400/10", border: "border-blue-400/30" },
-  OFFER_SENT: { label: "Offer Sent", color: "text-orange-400", bg: "bg-orange-400/10", border: "border-orange-400/30" },
-  ACCEPTED: { label: "Accepted", color: "text-emerald-400", bg: "bg-emerald-400/10", border: "border-emerald-400/30" },
-  PICKUP_SCHEDULED: { label: "Pickup Scheduled", color: "text-purple-400", bg: "bg-purple-400/10", border: "border-purple-400/30" },
-  COMPLETED: { label: "Completed", color: "text-green-400", bg: "bg-green-400/10", border: "border-green-400/30" },
-  CANCELLED: { label: "Cancelled", color: "text-red-400", bg: "bg-red-400/10", border: "border-red-400/30" },
+  PENDING: {
+    label: "Pending Review",
+    color: "text-amber-400",
+    bg: "bg-amber-400/10",
+    border: "border-amber-400/30",
+  },
+  UNDER_REVIEW: {
+    label: "Under Review",
+    color: "text-blue-400",
+    bg: "bg-blue-400/10",
+    border: "border-blue-400/30",
+  },
+  CONTACTED: {
+    label: "Contacted / Accepted",
+    color: "text-emerald-400",
+    bg: "bg-emerald-400/10",
+    border: "border-emerald-400/30",
+  },
+  ACCEPTED: {
+    label: "Accepted",
+    color: "text-emerald-400",
+    bg: "bg-emerald-400/10",
+    border: "border-emerald-400/30",
+  },
+  PICKUP_SCHEDULED: {
+    label: "Pickup Scheduled",
+    color: "text-purple-400",
+    bg: "bg-purple-400/10",
+    border: "border-purple-400/30",
+  },
+  COMPLETED: {
+    label: "Completed",
+    color: "text-teal-400",
+    bg: "bg-teal-400/10",
+    border: "border-teal-400/30",
+  },
+  REJECTED: {
+    label: "Declined",
+    color: "text-rose-400",
+    bg: "bg-rose-400/10",
+    border: "border-rose-400/30",
+  },
+  CANCELLED: {
+    label: "Cancelled",
+    color: "text-slate-400",
+    bg: "bg-slate-400/10",
+    border: "border-slate-400/30",
+  },
+  OFFER_SENT: {
+    label: "Reviewed",
+    color: "text-amber-300",
+    bg: "bg-amber-300/10",
+    border: "border-amber-300/30",
+  },
 };
 
 // Backend API base URL
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+export const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";

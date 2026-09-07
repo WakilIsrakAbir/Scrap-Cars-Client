@@ -3,16 +3,16 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  Menu, 
-  X, 
-  Car, 
-  User, 
-  Globe, 
-  LogOut, 
-  ChevronDown, 
-  LayoutDashboard, 
-  PlusCircle
+import {
+  Menu,
+  X,
+  Car,
+  User,
+  Globe,
+  LogOut,
+  ChevronDown,
+  LayoutDashboard,
+  PlusCircle,
 } from "lucide-react";
 import { getUser, logout } from "@/lib/api";
 import { useLanguage } from "@/context/LanguageContext";
@@ -60,7 +60,6 @@ export default function Navbar() {
     { label: t("nav.home", "Home"), href: "/" },
     { label: t("nav.sellCar", "Sell Your Car"), href: "/dashboard/new-post" },
     { label: t("nav.about", "About Us"), href: "/about" },
-    { label: t("nav.services", "Services"), href: "/services" },
     { label: t("nav.contact", "Contact Us"), href: "/contact" },
   ];
 
@@ -116,16 +115,28 @@ export default function Navbar() {
               <button
                 onClick={() => setUserDropdownOpen(!userDropdownOpen)}
                 className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 border cursor-pointer ${
-                  pathname.startsWith("/dashboard") || pathname.startsWith("/admin") || userDropdownOpen
+                  pathname.startsWith("/dashboard") ||
+                  pathname.startsWith("/admin") ||
+                  userDropdownOpen
                     ? "bg-accent/15 border-accent/40 text-accent shadow-sm shadow-accent/20"
                     : "bg-navy-900/80 border-white/10 text-slate-200 hover:text-white hover:bg-navy-800"
                 }`}
               >
                 <div className="w-6 h-6 rounded-full bg-accent text-white flex items-center justify-center font-bold text-xs shadow-sm">
-                  {user.name ? user.name.charAt(0).toUpperCase() : <User className="w-3.5 h-3.5" />}
+                  {user.name ? (
+                    user.name.charAt(0).toUpperCase()
+                  ) : (
+                    <User className="w-3.5 h-3.5" />
+                  )}
                 </div>
-                <span>{user.role === "ADMIN" ? t("nav.admin", "Admin") : t("nav.dashboard", "Dashboard")}</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${userDropdownOpen ? "rotate-180" : ""}`} />
+                <span>
+                  {user.role === "ADMIN"
+                    ? t("nav.admin", "Admin")
+                    : t("nav.dashboard", "Dashboard")}
+                </span>
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${userDropdownOpen ? "rotate-180" : ""}`}
+                />
               </button>
 
               {/* Dropdown Menu */}
@@ -137,8 +148,12 @@ export default function Navbar() {
                 >
                   {/* User Profile Header */}
                   <div className="px-3 py-2.5 border-b border-white/5 mb-1">
-                    <p className="text-xs font-bold text-white truncate">{user.name || "User"}</p>
-                    <p className="text-[11px] text-slate-400 truncate">{user.email || ""}</p>
+                    <p className="text-xs font-bold text-white truncate">
+                      {user.name || "User"}
+                    </p>
+                    <p className="text-[11px] text-slate-400 truncate">
+                      {user.email || ""}
+                    </p>
                     <span className="inline-block mt-1 text-[10px] uppercase font-semibold px-2 py-0.5 rounded bg-accent/20 text-accent">
                       {user.role || "USER"}
                     </span>
@@ -146,12 +161,16 @@ export default function Navbar() {
 
                   {/* Dashboard link */}
                   <Link
-                    href={user.role === "ADMIN" ? "/admin" : "/dashboard"}
+                    href={user.role === "ADMIN" ? "/admin/posts" : "/dashboard"}
                     onClick={() => setUserDropdownOpen(false)}
                     className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:text-white hover:bg-white/5 transition-colors"
                   >
                     <LayoutDashboard className="w-4 h-4 text-accent" />
-                    <span>{user.role === "ADMIN" ? t("nav.admin", "Admin Panel") : t("nav.dashboard", "Dashboard")}</span>
+                    <span>
+                      {user.role === "ADMIN"
+                        ? t("nav.admin", "Admin Panel")
+                        : t("nav.dashboard", "Dashboard")}
+                    </span>
                   </Link>
 
                   {/* Sell Car Quick Action */}
@@ -206,7 +225,11 @@ export default function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             className="w-9 h-9 rounded-lg bg-navy-800 text-slate-300 flex items-center justify-center cursor-pointer"
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </button>
         </div>
       </div>
@@ -232,14 +255,19 @@ export default function Navbar() {
                   <p className="text-[10px] text-slate-400">{user.email}</p>
                 </div>
                 <Link
-                  href={user.role === "ADMIN" ? "/admin" : "/dashboard"}
+                  href={user.role === "ADMIN" ? "/admin/posts" : "/dashboard"}
                   onClick={() => setMobileOpen(false)}
                   className="block px-4 py-2.5 rounded-lg text-sm text-accent font-semibold hover:bg-navy-800"
                 >
-                  {user.role === "ADMIN" ? t("nav.admin", "Admin Panel") : t("nav.dashboard", "Dashboard")}
+                  {user.role === "ADMIN"
+                    ? t("nav.admin", "Admin Panel")
+                    : t("nav.dashboard", "Dashboard")}
                 </Link>
                 <button
-                  onClick={() => { logout(); setMobileOpen(false); }}
+                  onClick={() => {
+                    logout();
+                    setMobileOpen(false);
+                  }}
                   className="block w-full text-left px-4 py-2.5 rounded-lg text-sm text-red-400 hover:bg-navy-800 cursor-pointer"
                 >
                   {t("nav.logout", "Logout")}

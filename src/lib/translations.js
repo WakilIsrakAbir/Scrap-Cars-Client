@@ -49,7 +49,7 @@ export const translations = {
       titleStart: "Sell Your Scrap Car in Dubai for ",
       titleHighlight: "Instant Cash",
       subtitle: "Get the highest guaranteed cash offer for any damaged, broken, accident, or scrap car across UAE. Free same-day towing and hassle-free RTA paperwork handled.",
-      ctaPrimary: "Get Instant Cash Offer",
+      ctaPrimary: "Sell Your Car",
       ctaSecondary: "WhatsApp Quotation",
       stat1Number: "15,000+",
       stat1Label: "Cars Purchased",
@@ -59,32 +59,36 @@ export const translations = {
       stat3Label: "Free Paperwork",
     },
 
-    // Services Page
+    // Services Page & Homepage Services Section
     servicesPage: {
-      tag: "WHAT WE DO",
-      title: "Premium Services For",
-      titleGradient: "Scrap & Damaged Cars",
-      subtitle: "We offer hassle-free services for selling your damaged or scrap car. From valuation to free towing and legal paperwork, we handle everything.",
+      tag: "OUR CORE SERVICES",
+      title: "Comprehensive Car Buying &",
+      titleGradient: "Salvage Solutions",
+      subtitle: "Professional car scrapping and salvage solutions tailored for UAE vehicle owners. From lightning-fast digital valuations to certified eco-friendly recycling.",
       items: [
         {
-          title: "Scrap & Junk Car Buying",
-          desc: "Turn your completely dead or scrap car into instant cash. We offer the best scrap metal and salvage rates in the UAE. Our team handles the RTA cancellation process and provides free towing from your location.",
+          title: "Instant Car Scrap Quote",
+          badge: "Lightning Response",
+          desc: "An instant online quote for your scrap or damaged car actually means instant. Simply submit vehicle photos and condition online or via WhatsApp to receive a transparent, guaranteed cash quotation in minutes without waiting.",
         },
         {
-          title: "Accident Damaged Cars",
-          desc: "Got into a severe accident? Don't stress over expensive repair quotes. We buy total loss and heavily damaged vehicles as-is. You get a fair market valuation based on salvageable parts.",
+          title: "Best Price Offers",
+          badge: "Highest Payout",
+          desc: "Excellent prices paid for broken, defective, scrap, or unwanted automobiles. Operating our own direct salvage facilities in Dubai and Sharjah means no middlemen deductions — our buyout price is guaranteed upon approval.",
         },
         {
-          title: "Engine & Transmission Failures",
-          desc: "When a car's engine seizes or transmission blows, repairs often exceed the car's value. We specialize in buying cars with major mechanical faults, paying you cash on the spot instead of a repair bill.",
+          title: "Specialist UAE Salvage",
+          badge: "Free 2-4 Hr Recovery",
+          desc: "The go-to salvage company when your car is too good to wreck but too expensive to fix. Our fleet of heavy-duty recovery flatbeds dispatches anywhere in the UAE, scheduling doorstep collection within 2 to 4 hours completely free.",
         },
         {
-          title: "RTA Failed & Expired Cars",
-          desc: "If your car failed the RTA passing inspection and is too costly to fix, or has been sitting with expired registration for years, we will buy it and clear the headache for you.",
+          title: "Trusted & Certified Recyclers",
+          badge: "100% RTA Cleared",
+          desc: "We cooperate with authorized facilities compliant with Dubai Municipality environmental regulations. Fluids are safely disposed of, parts salvaged, and your official RTA Certificate of Destruction or ownership cancellation is processed legally.",
         },
       ],
       coverageTitle: "Our Service Coverage",
-      coverageSubtitle: "We provide free towing and instant cash services across all 7 Emirates.",
+      coverageSubtitle: "We provide free doorstep towing and instant cash handover across all 7 Emirates.",
       cities: ["Dubai", "Sharjah", "Ajman", "Abu Dhabi", "Ras Al Khaimah", "Fujairah", "Umm Al Quwain"],
     },
 
@@ -111,6 +115,51 @@ export const translations = {
       greenTitle: "Green Recycling",
       greenDesc: "We are 100% compliant with Dubai Municipality environmental regulations. Fluids are safely drained, usable parts are salvaged, and metal is ethically recycled.",
       greenPoints: ["Safe Fluid Disposal", "Parts Salvaging", "Metal Recycling"],
+    },
+
+    // Customer Reviews & Social Proof
+    reviews: {
+      tag: "Verified UAE Customer Stories",
+      titleStart: "What UAE Car Sellers ",
+      titleHighlight: "Say About Us",
+      subtitle: "Join over 15,000 satisfied car owners who turned their scrap, damaged, and accidental cars into instant cash across Dubai & the UAE.",
+      googleRating: "4.9 / 5 Rating on Google Reviews",
+      verifiedSeller: "Verified UAE Seller",
+      badgeTitle: "100% Guaranteed Cash & Free Towing",
+      items: [
+        {
+          name: "Tariq Al-Nuaimi",
+          location: "Dubai Marina, Dubai",
+          car: "2019 Lexus ES 350 (Flood Damaged)",
+          rating: 5,
+          date: "2 days ago",
+          comment: "My Lexus suffered heavy water damage during the recent rains. Most scrap yards offered peanut rates. ScrapCars Dubai came with a recovery flatbed within 90 minutes and paid cash on the spot. RTA deregistration was completely taken care of!",
+        },
+        {
+          name: "Sarah Jenkins",
+          location: "Al Barsha, Dubai",
+          car: "2014 Honda Civic (Expired Registration)",
+          rating: 5,
+          date: "1 week ago",
+          comment: "I had a car sitting in my villa parking with expired registration for almost 2 years. I was worried about accumulated fines. Their team sorted out the RTA clearance smoothly and towed it away for free with instant cash handover.",
+        },
+        {
+          name: "Bilal Farooqi",
+          location: "Industrial Area 3, Sharjah",
+          car: "2017 Nissan Patrol (Total Loss Collision)",
+          rating: 5,
+          date: "2 weeks ago",
+          comment: "After an unfortunate highway accident, insurance declared it a total loss. ScrapCars gave me the highest salvage valuation by far compared to local Sharjah scrap yards. Professional, transparent, and prompt WhatsApp response.",
+        },
+        {
+          name: "Hamad Al-Ketbi",
+          location: "Mussafah, Abu Dhabi",
+          car: "2015 BMW 528i (Blown Engine)",
+          rating: 5,
+          date: "3 weeks ago",
+          comment: "Engine seized and the garage quoted 18,000 AED to replace it. Decided to sell it as scrap instead. The team picked it up directly from the workshop in Abu Dhabi without any towing fee. Super seamless transaction!",
+        },
+      ],
     },
 
     // Contact Page
@@ -394,7 +443,7 @@ export const translations = {
       titleStart: "بع سيارتك السكراب أو المعطلة في دبي بـ ",
       titleHighlight: "كاش فوري بأعلى سعر",
       subtitle: "احصل على أعلى تقييم نقدي مضمون لأي سيارة سكراب، مصدومة، معطلة أو منتهية الصلاحية في جميع أنحاء الإمارات مع ونش سحب مجاني وتخليص فوري لإجراءات المرور RTA.",
-      ctaPrimary: "احصل على عرض سعر فوري",
+      ctaPrimary: "بيع سيارتك",
       ctaSecondary: "طلب تسعير عبر واتساب",
       stat1Number: "+15,000",
       stat1Label: "سيارة تم شراؤها",
@@ -406,29 +455,33 @@ export const translations = {
 
     // Services Page
     servicesPage: {
-      tag: "ما نقدمه لك",
-      title: "خدمات متميزة لشراء",
-      titleGradient: "السيارات السكراب والتالفة",
-      subtitle: "نقدم أسرع وأسهل خدمة لبيع سيارتك المعطلة أو السكراب. من التقييم إلى السحب المجاني وإسقاط اللوحات، نتكفل بكل شيء.",
+      tag: "خدماتنا الأساسية",
+      title: "حلول متكاملة لشراء و",
+      titleGradient: "تشليح وسكراب السيارات",
+      subtitle: "خدمات احترافية متكاملة لمالكي السيارات في الإمارات؛ بدءاً من التقييم الفوري وأعلى عائد كاش، وحتى ونش السحب المجاني وإسقاط اللوحات المعتمد.",
       items: [
         {
-          title: "شراء سيارات السكراب والشطب",
-          desc: "حول سيارتك التالفة أو السكراب إلى كاش فوري. نقدم أعلى أسعار المعادن وإعادة التدوير في الإمارات ونتولى إجراءات المرور والسحب المجاني من موقعك.",
+          title: "تسعيرة فورية لسيارات السكراب",
+          badge: "تقييم فوري",
+          desc: "تقييم فوري حقيقي لسيارتك التالفة أو السكراب. ما عليك سوى إرسال صور وتفاصيل السيارة عبر الموقع أو واتساب للحصول على تسعيرة كاش مضمونة خلال دقائق معدودة دون أي انتظار.",
         },
         {
-          title: "شراء سيارات الحوادث والمصدومة",
-          desc: "تعرضت لحادث مروري وتكاليف التصليح مرتفعة؟ نشتري السيارات الملغية والمصدومة بحالتها الراهنة بأعلى تقييم لقطع الغيار الصالحة.",
+          title: "أفضل عروض الأسعار النقدية",
+          badge: "أعلى سعر كاش",
+          desc: "ندفع أفضل الأسعار للسيارات المعطلة، القديمة، أو التالفة كلياً. بفضل امتلاكنا لمرافق التشليح الخاصة في دبي والشارقة دون وسطاء، نضمن لك الحصول على أعلى قيمة سوقية ممكنة.",
         },
         {
-          title: "سيارات الأعطال الميكانيكية والماكينة",
-          desc: "إذا تعطلت الماكينة أو الجير وتجاوزت تكلفة الصيانة قيمة السيارة، نحن نشتريها وندفع لك كاش فوراً بدلاً من دفع فواتير صيانة باهظة.",
+          title: "خدمات السحب والتشليح المتخصصة",
+          badge: "سحب مجاني 2-4 ساعات",
+          desc: "وجهتك الأولى عندما تكون تكلفة إصلاح السيارة أعلى من قيمتها. أسطول شاحنات الونش لدينا جاهز لنقل سيارتك من أمام منزلك أو الورشة في أي مكان بالإمارات مجاناً خلال ساعتين إلى 4 ساعات.",
         },
         {
-          title: "السيارات الراسبة بالفحص ومنتهية الملكية",
-          desc: "سيارتك لم تجتز فحص RTA أو منتهية الملكية منذ سنوات؟ نخلصك من عبء الغرامات وتجديد الملكية ونشتريها مع تسقيط اللوحات رسمياً.",
+          title: "إعادة تدوير معتمدة وموثوقة",
+          badge: "إسقاط لوحات رسمي 100%",
+          desc: "نلتزم بنسبة 100% بالمعايير البيئية لبلدية دبي. يتم تفريغ السوائل بأمان، إعادة تدوير المعادن، وإنهاء كافة معاملات إسقاط اللوحات المرورية لدى هيئة الطرق والمواصلات (RTA) بشكل قانوني وسليم.",
         },
       ],
-      coverageTitle: "نطاق خدماتنا في الإمارات",
+      coverageTitle: "نطاق تغطية خدماتنا في الإمارات",
       coverageSubtitle: "نوفر خدمة الونش والسحب المجاني والدفع الكاش في كافة الإمارات السبع.",
       cities: ["دبي", "الشارقة", "عجمان", "أبوظبي", "رأس الخيمة", "الفجيرة", "أم القيوين"],
     },
@@ -456,6 +509,51 @@ export const translations = {
       greenTitle: "إعادة تدوير بيئي آمن",
       greenDesc: "نلتزم بنسبة 100% بالمعايير البيئية لبلدية دبي؛ تفريغ الزيوت والسوائل بطرق آمنة، فرز قطع الغيار الصالحة، وإعادة تدوير الهياكل المعدنية.",
       greenPoints: ["تفريغ آمن للزيوت", "استرداد القطع الصالحة", "تدوير المعادن"],
+    },
+
+    // Customer Reviews & Social Proof (Arabic)
+    reviews: {
+      tag: "تجارب العملاء الموثقة",
+      titleStart: "ماذا يقول عملاؤنا في ",
+      titleHighlight: "الإمارات عنا",
+      subtitle: "انضم إلى أكثر من 15,000 مالك سيارة باعوا سياراتهم السكراب والمتضررة وحصلوا على كاش فوري في دبي وجميع أنحاء الإمارات.",
+      googleRating: "تقييم 4.9 / 5 على تقييمات جوجل",
+      verifiedSeller: "بائع موثق في الإمارات",
+      badgeTitle: "دفع نقدي فوري 100% وسحب مجاني",
+      items: [
+        {
+          name: "طارق النعيمي",
+          location: "دبي مارينا، دبي",
+          car: "لكزس ES 350 موديل 2019 (أضرار غرق ومياه)",
+          rating: 5,
+          date: "منذ يومين",
+          comment: "تضررت سيارتي اللكزس بشدة جراء مياه الأمطار، ومعظم محلات السكراب قدمت أسعاراً بخسة. فريق سكراب كارز دبي وصل مع ونش السحب خلال 90 دقيقة واستلمت المبلغ كاش فوراً مع إسقاط اللوحات وإجراءات المرور بالكامل!",
+        },
+        {
+          name: "سارة جينكينز",
+          location: "البرشاء، دبي",
+          car: "هوندا سيفيك موديل 2014 (ملكية منتهية)",
+          rating: 5,
+          date: "منذ أسبوع",
+          comment: "كانت السيارة متوقفة في مواقف الفيلا مع ملكية منتهية لأكثر من عامين وكنت قلقة من الغرامات. قام الفريق بتسوية أوراق المرور ونقل السيارة بسحب مجاني واستلام نقدي دون أي تعقيدات.",
+        },
+        {
+          name: "بلال فاروقي",
+          location: "المنطقة الصناعية 3، الشارقة",
+          car: "نيسان باترول موديل 2017 (شطب حادث كلي)",
+          rating: 5,
+          date: "منذ أسبوعين",
+          comment: "بعد حادث على الطريق السريع قررت شركة التأمين شطب السيارة كلياً. قدموا لي أعلى سعر سكراب مقارنة بسوق الشارقة مع احترافية عالية وسرعة في الرد عبر واتساب.",
+        },
+        {
+          name: "حمد الكتبي",
+          location: "مصفح، أبوظبي",
+          car: "بي إم دبليو الفئة الخامسة 2015 (عطل محرك)",
+          rating: 5,
+          date: "منذ 3 أسابيع",
+          comment: "تعطل المحرك وطلب الكراج 18,000 درهم للإصلاح. قررت بيعها كسكراب، وتم استلام السيارة من باب الكراج في أبوظبي مجاناً واستلام الكاش فوراً. خدمة ممتازة ومريحة جداً!",
+        },
+      ],
     },
 
     // Contact Page
