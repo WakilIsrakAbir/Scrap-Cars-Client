@@ -139,19 +139,6 @@ export default function HeroSection() {
                   <p className="text-white font-bold text-base">{t("hero.badge", "Damaged & Scrap Cars")}</p>
                 </div>
              </div>
-
-             {/* Floating Trust Badges */}
-             <div className={`absolute -bottom-4 ${isRTL ? "-right-4" : "-left-4"} glass px-4 py-2.5 rounded-xl border border-white/15 shadow-xl backdrop-blur-md z-20 animate-float-reverse`}>
-               <div className="flex items-center gap-2.5">
-                 <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
-                   <span className="text-sm font-bold text-accent">{t("common.aed", "AED")}</span>
-                 </div>
-                 <div>
-                   <p className="text-white font-bold text-xs">{t("common.instantCash", "Instant Cash")}</p>
-                   <p className="text-slate-400 text-[10px]">{locale === "ar" ? "تسليم فوري في يدك" : "Paid on the spot"}</p>
-                 </div>
-               </div>
-             </div>
              
              <div className={`absolute -top-4 ${isRTL ? "-left-2" : "-right-2"} glass px-4 py-2.5 rounded-xl border border-white/15 shadow-xl backdrop-blur-md z-20 animate-float-slow`}>
                <div className="flex items-center gap-2.5">
