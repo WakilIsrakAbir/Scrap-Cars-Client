@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { getUser, logout } from "@/lib/api";
 import { useLanguage } from "@/context/LanguageContext";
+import Logo from "@/components/ui/Logo";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -70,15 +71,11 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-accent to-gold flex items-center justify-center shadow-md shadow-accent/20 group-hover:scale-105 transition-transform">
-            <Car className="w-5 h-5 text-white" />
-          </div>
-          <span className="text-lg font-bold text-white tracking-tight">
-            Scrap<span className="text-accent">Cars</span>
-          </span>
+        {/* Luxury Automotive Logo */}
+        <Link href="/" className="inline-block">
+          <Logo />
         </Link>
+
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1.5">

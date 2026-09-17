@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { UserPlus, Eye, EyeOff, CheckCircle2, AlertCircle } from "lucide-react";
 import { apiFetch, setToken, setUser } from "@/lib/api";
 import { useLanguage } from "@/context/LanguageContext";
+import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -204,6 +205,21 @@ export default function RegisterPage() {
           </button>
         </form>
 
+        {/* Divider */}
+        <div className="relative my-6">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-white/10" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-navy-900 px-3 text-slate-400 font-medium tracking-wider">
+              {t("auth.orDivider", "Or continue with")}
+            </span>
+          </div>
+        </div>
+
+        {/* Google Sign In */}
+        <GoogleAuthButton onAuthError={(msg) => setError(msg)} />
+
         <p className="text-center text-sm text-slate-400 mt-6">
           {t("auth.hasAccount", "Already have an account?")}{" "}
           <Link href="/login" className="text-accent hover:underline font-medium">
@@ -214,3 +230,4 @@ export default function RegisterPage() {
     </div>
   );
 }
+

@@ -1,45 +1,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <defs>
-    <linearGradient id="scGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FF5722"/>
-      <stop offset="45%" stop-color="#FF6B2C"/>
-      <stop offset="100%" stop-color="#FFA000"/>
+    <linearGradient id="crestGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="40%" stop-color="#F59E0B"/>
+      <stop offset="75%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#B45309"/>
     </linearGradient>
-    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="125%">
-      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.25"/>
+    <linearGradient id="darkChrome" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="50%" stop-color="#090E17"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="speedSilver" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#94A3B8" stop-opacity="0.4"/>
+    </linearGradient>
+    <filter id="badgeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    <filter id="headlightGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
   </defs>
 
-  <!-- Background rounded squircle -->
-  <rect width="128" height="128" rx="30" fill="url(#scGradient)"/>
+  <!-- Luxury Outer Rounded Squircle Base with Gold Edge -->
+  <rect x="4" y="4" width="120" height="120" rx="32" fill="url(#crestGold)" filter="url(#badgeShadow)"/>
   
-  <!-- Sleek subtle inner border -->
-  <rect x="2" y="2" width="124" height="124" rx="28" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-opacity="0.35"/>
+  <!-- Deep Metallic Core -->
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="url(#darkChrome)"/>
+  
+  <!-- Inner Precision Bevel -->
+  <rect x="9.5" y="9.5" width="109" height="109" rx="26.5" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.15"/>
 
-  <!-- ScrapCars Vehicle Silhouette in crisp white -->
-  <g filter="url(#subtleShadow)">
-    <!-- Cabin & Windshield -->
-    <path d="M38 42C41 34 46 32 54 32H74C82 32 87 34 90 42L98 55H30L38 42Z" fill="#FFFFFF"/>
+  <!-- Precision Aerodynamic Supercar Silhouette -->
+  <g transform="translate(4, 8)">
+    <!-- Aerodynamic Fastback Roofline & Body Silhouette -->
+    <path d="M18 76C24 72 35 71 43 66L56 45C61 38 68 36 80 37H91C97 38 102 43 106 52L112 66C115 72 112 77 106 80C94 84 66 85 18 76Z" fill="url(#crestGold)"/>
     
-    <!-- Windshield glass cutouts (accent orange contrast) -->
-    <path d="M42 43L47 36C49.5 35 52 35 56 35H62V51H37L42 43Z" fill="#FF5722" fill-opacity="0.85"/>
-    <path d="M66 35H72C76 35 78.5 35 81 36L86 43L91 51H66V35Z" fill="#FF5722" fill-opacity="0.85"/>
-
-    <!-- Main Car Body -->
-    <path d="M22 55C18 55 16 57 16 61V72C16 75 18 77 21 77H24C24 71.5 28.5 67 34 67C39.5 67 44 71.5 44 77H84C84 71.5 88.5 67 94 67C99.5 67 104 71.5 104 77H107C110 77 112 75 112 72V61C112 57 110 55 106 55H22Z" fill="#FFFFFF"/>
+    <!-- Tinted Cabin Glass Windshield Cut -->
+    <path d="M58 48L48 64C56 64.5 68 64 78 63L86 48C82 45.5 70 45 58 48Z" fill="#020617" opacity="0.95"/>
     
-    <!-- Headlights -->
-    <path d="M19 60H26C27.5 60 28 61 28 62.5C28 64 27.5 65 26 65H19C17.5 65 17 64 17 62.5C17 61 17.5 60 19 60Z" fill="#FFF3E0"/>
-    <path d="M109 60H102C100.5 60 100 61 100 62.5C100 64 100.5 65 102 65H109C110.5 65 111 64 111 62.5C111 61 110.5 60 109 60Z" fill="#FFF3E0"/>
-
-    <!-- Left Wheel (Wheel outer tire + rim) -->
-    <circle cx="34" cy="77" r="12" fill="#0B1120"/>
-    <circle cx="34" cy="77" r="6.5" fill="#E2E8F0"/>
-    <circle cx="34" cy="77" r="3" fill="#FF6B2C"/>
-
-    <!-- Right Wheel (Wheel outer tire + rim) -->
-    <circle cx="94" cy="77" r="12" fill="#0B1120"/>
-    <circle cx="94" cy="77" r="6.5" fill="#E2E8F0"/>
-    <circle cx="94" cy="77" r="3" fill="#FF6B2C"/>
+    <!-- Aggressive Xenon / LED Headlight Beam -->
+    <path d="M16 78L35 73L22 82L16 78Z" fill="#FFFFFF" filter="url(#headlightGlow)"/>
+    
+    <!-- Muscular Lower Aero Crease / Side Vent -->
+    <path d="M43 72L73 69L67 75L40 78L43 72Z" fill="#090E17" opacity="0.85"/>
+    
+    <!-- High-Speed Lower Ground Effect Splitter -->
+    <path d="M14 86C36 88.5 76 89.5 109 83" stroke="url(#crestGold)" stroke-width="3.5" stroke-linecap="round"/>
+    
+    <!-- Aero Flow Roofline Accent -->
+    <path d="M36 34C50 30 72 30 88 31" stroke="url(#speedSilver)" stroke-width="2" stroke-linecap="round"/>
   </g>
 </svg>

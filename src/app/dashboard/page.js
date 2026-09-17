@@ -27,6 +27,7 @@ import Skeleton from "@/components/ui/Skeleton";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import { useLanguage } from "@/context/LanguageContext";
 import { CAR_CONDITIONS, SITE_INFO } from "@/lib/constants";
+import ImageUploader from "@/components/ui/ImageUploader";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -37,12 +38,14 @@ export default function DashboardPage() {
 
   // Edit modal state
   const [editingPost, setEditingPost] = useState(null);
+  const [editImages, setEditImages] = useState([]);
   const [editForm, setEditForm] = useState({
     brand: "",
     model: "",
     year: "",
     condition: "",
     locationAddress: "",
+
     description: "",
   });
   const [savingEdit, setSavingEdit] = useState(false);
@@ -81,6 +84,12 @@ export default function DashboardPage() {
       locationAddress: post.locationAddress || "",
       description: post.description || "",
     });
+    const existing = (post.images || []).map((url) => ({
+      preview: url,
+      isExisting: true,
+      url: url,
+    }));
+    setEditImages(existing);
     setActionSuccess("");
   };
 
@@ -90,16 +99,28 @@ export default function DashboardPage() {
 
     setSavingEdit(true);
     try {
+      const formData = new FormData();
+      formData.append("brand", editForm.brand);
+      formData.append("model", editForm.model);
+      formData.append("year", String(editForm.year));
+      formData.append("condition", editForm.condition);
+      formData.append("locationAddress", editForm.locationAddress);
+      formData.append("description", editForm.description || "");
+
+      const existingUrls = [];
+      editImages.forEach((img) => {
+        if (img.file) {
+          formData.append("images", img.file);
+        } else if (img.url || typeof img === "string") {
+          existingUrls.push(img.url || img);
+        }
+      });
+
+      formData.append("existingImages", JSON.stringify(existingUrls));
+
       await apiFetch(`/posts/${editingPost._id}`, {
         method: "PATCH",
-        body: JSON.stringify({
-          brand: editForm.brand,
-          model: editForm.model,
-          year: Number(editForm.year),
-          condition: editForm.condition,
-          locationAddress: editForm.locationAddress,
-          description: editForm.description,
-        }),
+        body: formData,
       });
 
       setActionSuccess(`Updated ${editForm.brand} ${editForm.model} successfully!`);
@@ -111,6 +132,7 @@ export default function DashboardPage() {
       setSavingEdit(false);
     }
   };
+
 
   const handleDeletePost = async (postId, carTitle) => {
     if (!confirm(`Are you sure you want to delete your post "${carTitle}"? This cannot be undone.`)) {
@@ -477,10 +499,10 @@ export default function DashboardPage() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="bg-navy-900 border border-white/15 rounded-3xl w-full max-w-xl shadow-2xl overflow-hidden"
+                className="bg-navy-900 border border-white/15 rounded-3xl w-full max-w-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
               >
                 {/* Modal Header */}
-                <div className="p-6 border-b border-white/10 flex items-center justify-between">
+                <div className="p-6 border-b border-white/10 flex items-center justify-between flex-shrink-0">
                   <div className="flex items-center gap-2.5">
                     <div className="w-9 h-9 rounded-xl bg-accent/20 text-accent flex items-center justify-center">
                       <Edit3 className="w-4 h-4" />
@@ -499,7 +521,8 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Modal Form */}
-                <form onSubmit={handleSaveEdit} className="p-6 space-y-4">
+                <form onSubmit={handleSaveEdit} className="p-6 space-y-4 overflow-y-auto">
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs font-semibold text-slate-300 block mb-1">Make / Brand</label>
@@ -575,7 +598,20 @@ export default function DashboardPage() {
                     />
                   </div>
 
+                  <div>
+                    <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      Car Photos (Max 5 • Up to 10MB each)
+                    </label>
+                    <ImageUploader
+                      images={editImages}
+                      setImages={setEditImages}
+                      max={5}
+                      maxSizeMB={10}
+                    />
+                  </div>
+
                   <div className="pt-3 border-t border-white/10 flex items-center justify-end gap-2.5">
+
                     <button
                       type="button"
                       onClick={() => setEditingPost(null)}

@@ -13,14 +13,24 @@ export async function apiFetch(endpoint, options = {}) {
     },
   });
 
-  const data = await res.json();
+  const contentType = res.headers.get("content-type");
+  let data = {};
+  if (contentType && contentType.includes("application/json")) {
+    data = await res.json();
+  } else {
+    const text = await res.text();
+    if (!res.ok) {
+      throw new Error(`Server returned ${res.status} (${res.statusText || "Endpoint not found"}). If running locally, make sure your backend is pointing to localhost.`);
+    }
+  }
 
   if (!res.ok) {
-    throw new Error(data.message || "Something went wrong");
+    throw new Error(data.message || `Request failed with status ${res.status}`);
   }
 
   return data;
 }
+
 
 // Auth helpers
 export function setToken(token) {

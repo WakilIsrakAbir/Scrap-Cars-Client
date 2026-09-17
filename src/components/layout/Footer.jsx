@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Car, Phone, Mail, MapPin } from "lucide-react";
 import { SITE_INFO } from "@/lib/constants";
 import { useLanguage } from "@/context/LanguageContext";
+import Logo from "@/components/ui/Logo";
+
 
 export default function Footer() {
   const { t, isRTL } = useLanguage();
@@ -14,14 +16,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-8 border-b border-white/5">
           {/* Brand */}
           <div className="space-y-3">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-accent to-gold flex items-center justify-center">
-                <Car className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-lg font-bold text-white">
-                Scrap<span className="text-accent">Cars</span>
-              </span>
+            <Link href="/" className="inline-block">
+              <Logo size="default" />
             </Link>
+
             <p className="text-sm text-slate-400 leading-relaxed font-light">
               {t(
                 "footer.description",

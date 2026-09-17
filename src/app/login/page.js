@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { LogIn, Eye, EyeOff } from "lucide-react";
 import { apiFetch, setToken, setUser } from "@/lib/api";
 import { useLanguage } from "@/context/LanguageContext";
+import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -106,11 +107,26 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-accent to-amber-500 text-white font-semibold text-sm disabled:opacity-50 cursor-pointer shadow-lg shadow-accent/20"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-accent to-amber-500 text-white font-semibold text-sm disabled:opacity-50 cursor-pointer shadow-lg shadow-accent/20 hover:shadow-accent/40 transition-shadow"
           >
             {loading ? t("auth.loggingIn", "Logging in...") : t("auth.loginBtn", "Login")}
           </button>
         </form>
+
+        {/* Divider */}
+        <div className="relative my-6">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-white/10" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-navy-900 px-3 text-slate-400 font-medium tracking-wider">
+              {t("auth.orDivider", "Or continue with")}
+            </span>
+          </div>
+        </div>
+
+        {/* Google Sign In */}
+        <GoogleAuthButton onAuthError={(msg) => setError(msg)} />
 
         <p className="text-center text-sm text-slate-400 mt-6">
           {t("auth.noAccount", "Don't have an account?")}{" "}
@@ -122,3 +138,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

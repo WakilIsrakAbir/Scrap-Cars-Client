@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { LanguageProvider } from "@/context/LanguageContext";
+import GoogleAuthProvider from "@/components/providers/GoogleAuthProvider";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 const outfit = Outfit({ variable: "--font-outfit", subsets: ["latin"], display: "swap" });
@@ -32,12 +33,15 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.variable} ${outfit.variable} ${cairo.variable} antialiased`}>
       <body className="min-h-screen flex flex-col bg-navy-950 text-slate-100 selection:bg-accent selection:text-white">
         <LanguageProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <WhatsAppButton />
+          <GoogleAuthProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <WhatsAppButton />
+          </GoogleAuthProvider>
         </LanguageProvider>
       </body>
     </html>
   );
 }
+
